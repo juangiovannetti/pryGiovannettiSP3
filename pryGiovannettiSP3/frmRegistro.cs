@@ -13,6 +13,7 @@ namespace pryGiovannettiSP3
         string origen;
         int numero;
         string Descripcion;
+        int indice = 0;
 
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -56,10 +57,16 @@ namespace pryGiovannettiSP3
             {
                 btnIngresar.Enabled = true;
             }
-            else 
+            else
             {
                 btnIngresar.Enabled = false;
             }
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            vecRespuesto[indice] = "untexto";
+            indice++;
         }
     }
 }
