@@ -184,9 +184,21 @@ namespace pryGiovannettiSP3
         string Resultado = "";
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            Resultado  = ""; //Limpio las variables
+            Resultado = ""; //Limpio las variables
             MarcaSeleccionada = cmbMarca.Text;
 
+        }
+
+        private void frmRegistro_Load(object sender, EventArgs e)
+        {
+            cmbMarca.Items.Add("(P) Peugeot");
+            cmbMarca.Items.Add("(F) Fiat");
+            cmbMarca.Items.Add("(R) Renault");
+            cmbOrigen.Items.Add("(N) Nacional");
+            cmbOrigen.Items.Add("(I) Importado");
+            cmbMarcaCta.Items.Add("(P) Peugeot");
+            cmbMarcaCta.Items.Add("(F) Fiat");
+            cmbMarcaCta.Items.Add("(R) Renault");
         }
     }
 }
