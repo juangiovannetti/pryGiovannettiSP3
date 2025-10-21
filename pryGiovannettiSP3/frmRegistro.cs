@@ -26,6 +26,23 @@ namespace pryGiovannettiSP3
         public static string[] vecDescripcion = new string[100];
         public static float[] vecPrecio = new float[100];
 
+        struct datoRepuesto
+        {
+            public string Marca;
+            public string Origen;
+            public int Numero;
+            public string Descripcion;
+            public int Precio;
+        }
+
+        //indice PARA FILAS (primero se nombran las filas, luego las columnas)
+        //otro indice o la posición por defecto para COLUMNAS
+
+        string[,] matRespuesto = new string[100, 5];
+
+        int indiceGrabar = 0;
+
+
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbMarca.SelectedIndex != -1)
@@ -54,11 +71,11 @@ namespace pryGiovannettiSP3
         {
             if (mtbNumeroRespuesto.Text != "")
             {
-                btnIngresar.Enabled = true;
+               txtDescripcion.Enabled = true;
             }
             else
             {
-                btnIngresar.Enabled = false;
+                txtDescripcion.Enabled= false;
             }
         }
 
@@ -122,9 +139,6 @@ namespace pryGiovannettiSP3
 
                 indice++;
             }
-
-            vecRespuesto[indice] = "untexto";
-            indice++;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -179,7 +193,10 @@ namespace pryGiovannettiSP3
             {
                 btnConsultar.Enabled = false;
             }
+
         }
+
+
         //se utilizara para acumular los valores y mostrarlos
         string Resultado = "";
         private void btnConsultar_Click(object sender, EventArgs e)
