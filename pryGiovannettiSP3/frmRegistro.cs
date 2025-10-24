@@ -10,6 +10,8 @@ namespace pryGiovannettiSP3
             InitializeComponent();
         }
         //Definicion de variables globales
+        //Static para que no se modifiquen las variables
+        //New es instanciar en la memoria     
         float Precio = 0;
         public static string[] vecRespuesto = new string[100];
         string Marca;
@@ -196,6 +198,13 @@ namespace pryGiovannettiSP3
 
         }
 
+        private void mtbNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
 
         //se utilizara para acumular los valores y mostrarlos
         string Resultado = "";
@@ -204,6 +213,22 @@ namespace pryGiovannettiSP3
             Resultado = ""; //Limpio las variables
             MarcaSeleccionada = cmbMarca.Text;
 
+            while (Indice <  frmRegistro.indice)
+            {
+                //Verifico que coincido la marca y el rogen seleccionado
+                if (frmRegistro.vecMarca[Indice] == MarcaSeleccionada && frmRegistro.vecOrigen[Indice] == OrigenSeleccionado)
+                {
+                    Resultado += "Número:" + frmRegistro.vecNumero[Indice] + Environment.NewLine;
+                    Resultado += " Descripción:" + frmRegistro.vecDescripcion[Indice] + Environment.NewLine;
+                    Resultado += " Precio: $" + frmRegistro.vecPrecio[Indice] + Environment.NewLine;
+                    Resultado += "------------------------------------" + Environment.NewLine;
+                }
+                Indice++;
+            }
+            if (Resultado == "")
+            {
+                Resultado = "No se encontraron repuestos con estos criterios";
+            }
         }
 
         private void frmRegistro_Load(object sender, EventArgs e)
