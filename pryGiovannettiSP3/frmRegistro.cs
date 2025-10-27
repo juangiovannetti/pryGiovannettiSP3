@@ -213,36 +213,42 @@ namespace pryGiovannettiSP3
             Resultado = ""; //Limpio las variables
             MarcaSeleccionada = cmbMarca.Text;
 
-         
+
             if (!chkNacional.Checked && !chkImportado.Checked)
             {
-                MessageBox.Show("Debe seleccionar un origen (Nacional o Importado).", "Error",
+                MessageBox.Show("Debe seleccionar un origen (Nacional o Importado).", "Error de Filtro",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             int contadorCoincidencias = 0;
 
-            // Recorre el array de datos cargados (hasta el índice actual)
-            // El 'indice' global indica cuántos elementos válidos hay cargados en los arrays.
+            // Recorrer el array de datos cargados (hasta el índice actual 'indice' de la clase)
             for (int i = 0; i < indice; i++)
             {
-                // Aplica los criterios de filtro
-                // Verifica si la Marca y el Origen coinciden con los arrays de datos.
+                // Aplicar los criterios de filtro
                 if (vecMarca[i] == MarcaSeleccionada && vecOrigen[i] == OrigenSeleccionado)
                 {
-                    //  Concatenar la información del repuesto que coincide
+                    //Acumula la línea de resultado en la variable de clase 'Resultado' 
                     Resultado += $"Marca: {vecMarca[i]}, Origen: {vecOrigen[i]}, Número: {vecNumero[i]}, Descripción: {vecDescripcion[i]}, Precio: {vecPrecio[i]:C}\r\n";
                     contadorCoincidencias++;
                 }
             }
 
-            // Mostrar el resultado
+            // Mostrar el resultado final
             if (contadorCoincidencias > 0)
             {
-               
-                MessageBox.Show(Resultado, $"Resultados de la consulta ({contadorCoincidencias})",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Agregar el encabezado a la ListBox.
+                lstResultado.Items.Add($"--- {contadorCoincidencias} Repuesto(s) encontrado(s) para {MarcaSeleccionada} y {OrigenSeleccionado} ---");
+
+                //Separar la cadena Resultado por líneas y añadirlas a la ListBox.
+                //Esto mantiene la lógica de acumulación en la variable 'Resultado'.
+                string[] lineas = Resultado.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string linea in lineas)
+                {
+                    lstResultado.Items.Add(linea);
+                }
             }
             else
             {
@@ -283,7 +289,7 @@ namespace pryGiovannettiSP3
 
             }
         }
-  private void CargadorDatos()
+        private void CargadorDatos()
         {
             // Fila 0
             matRespuesto[0, 0] = "TechNova";
@@ -459,6 +465,21 @@ namespace pryGiovannettiSP3
             matRespuesto[24, 2] = "33446";
             matRespuesto[24, 3] = "9.99";
             matRespuesto[24, 4] = "Cable USB-C de carga rápida, 2 metros.";
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            // 1. Limpiar los criterios de búsqueda ComboBox y CheckBoxes
+            cmbMarcaCta.SelectedIndex = -1; // Deselecciona el ítem del ComboBox
+            chkNacional.Checked = false;    // Desmarca el CheckBox Nacional
+            chkImportado.Checked = false;   // Desmarca el CheckBox Importado
+
+            //Limpia la ListBox de resultados
+            lstResultado.Items.Clear();
+
+            btnConsultar.Enabled = false;
+
+            cmbMarcaCta.Focus();
         }
     }
 
