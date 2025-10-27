@@ -86,12 +86,12 @@ namespace pryGiovannettiSP3
             if (txtDescripcion.Text != "")
             {
                 btnIngresar.Enabled = true;
-                lblPrecio.Enabled = true;
+                txtPrecio.Enabled = true;
             }
             else
             {
                 btnIngresar.Enabled = false;
-                lblPrecio.Enabled = false;
+                txtPrecio.Enabled = false;
             }
         }
 
@@ -102,7 +102,7 @@ namespace pryGiovannettiSP3
             Origen = cmbOrigen.Text;
             Numero = Convert.ToInt32(mtbNumeroRespuesto.Text.Trim());
             Descripcion = txtDescripcion.Text;
-            Precio = Convert.ToInt32(lblPrecio.Text.Trim());
+            Precio = Convert.ToInt32(txtPrecio.Text.Trim());
 
             //Validamos que el array no este lleno
             if (indice >= vecNumero.Length)
@@ -149,7 +149,7 @@ namespace pryGiovannettiSP3
             cmbOrigen.SelectedIndex = -1;
             mtbNumeroRespuesto.Text = "";
             txtDescripcion.Text = "";
-            lblPrecio.Text = "";
+            txtPrecio.Text = "";
             cmbMarca.Focus();
 
 

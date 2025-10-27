@@ -30,6 +30,7 @@
         {
             TabPage tpDatos;
             TabPage Consultas;
+            txtPrecio = new TextBox();
             lblMacaDeRespuesto = new Label();
             btnIngresar = new Button();
             lblOrigenDeRespuesto = new Label();
@@ -40,7 +41,6 @@
             txtDescripcion = new TextBox();
             lblPrecioDelRespuesto = new Label();
             cmbOrigen = new ComboBox();
-            lblPrecio = new Label();
             cmbMarca = new ComboBox();
             btnConsultar = new Button();
             lblMarcaDeRepuesto = new Label();
@@ -68,6 +68,7 @@
             // 
             // tpDatos
             // 
+            tpDatos.Controls.Add(txtPrecio);
             tpDatos.Controls.Add(lblMacaDeRespuesto);
             tpDatos.Controls.Add(btnIngresar);
             tpDatos.Controls.Add(lblOrigenDeRespuesto);
@@ -78,16 +79,22 @@
             tpDatos.Controls.Add(txtDescripcion);
             tpDatos.Controls.Add(lblPrecioDelRespuesto);
             tpDatos.Controls.Add(cmbOrigen);
-            tpDatos.Controls.Add(lblPrecio);
             tpDatos.Controls.Add(cmbMarca);
             tpDatos.Location = new Point(4, 24);
             tpDatos.Margin = new Padding(3, 2, 3, 2);
             tpDatos.Name = "tpDatos";
             tpDatos.Padding = new Padding(3, 2, 3, 2);
-            tpDatos.Size = new Size(679, 296);
+            tpDatos.Size = new Size(314, 296);
             tpDatos.TabIndex = 0;
             tpDatos.Text = "Datos";
             tpDatos.UseVisualStyleBackColor = true;
+            // 
+            // txtPrecio
+            // 
+            txtPrecio.Location = new Point(187, 169);
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.Size = new Size(112, 23);
+            txtPrecio.TabIndex = 12;
             // 
             // lblMacaDeRespuesto
             // 
@@ -181,7 +188,7 @@
             // 
             lblPrecioDelRespuesto.AutoSize = true;
             lblPrecioDelRespuesto.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPrecioDelRespuesto.Location = new Point(18, 177);
+            lblPrecioDelRespuesto.Location = new Point(18, 175);
             lblPrecioDelRespuesto.Name = "lblPrecioDelRespuesto";
             lblPrecioDelRespuesto.Size = new Size(44, 17);
             lblPrecioDelRespuesto.TabIndex = 4;
@@ -192,27 +199,16 @@
             cmbOrigen.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbOrigen.Enabled = false;
             cmbOrigen.FormattingEnabled = true;
-            cmbOrigen.Items.AddRange(new object[] { "(N) Nacional", "(I) Importado" });
             cmbOrigen.Location = new Point(166, 51);
             cmbOrigen.Name = "cmbOrigen";
             cmbOrigen.Size = new Size(133, 23);
             cmbOrigen.TabIndex = 7;
             cmbOrigen.SelectedIndexChanged += cmbOrigen_SelectedIndexChanged;
             // 
-            // lblPrecio
-            // 
-            lblPrecio.AutoSize = true;
-            lblPrecio.Location = new Point(166, 177);
-            lblPrecio.Name = "lblPrecio";
-            lblPrecio.Size = new Size(22, 15);
-            lblPrecio.TabIndex = 5;
-            lblPrecio.Text = "---";
-            // 
             // cmbMarca
             // 
             cmbMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMarca.FormattingEnabled = true;
-            cmbMarca.Items.AddRange(new object[] { "(P) Peugeot", "(F) Fiat", "(R) Renault" });
             cmbMarca.Location = new Point(166, 12);
             cmbMarca.Name = "cmbMarca";
             cmbMarca.Size = new Size(133, 23);
@@ -232,7 +228,7 @@
             Consultas.Margin = new Padding(3, 2, 3, 2);
             Consultas.Name = "Consultas";
             Consultas.Padding = new Padding(3, 2, 3, 2);
-            Consultas.Size = new Size(679, 296);
+            Consultas.Size = new Size(314, 296);
             Consultas.TabIndex = 1;
             Consultas.Text = "consultas";
             Consultas.UseVisualStyleBackColor = true;
@@ -329,7 +325,7 @@
             tpConsultar.Margin = new Padding(3, 2, 3, 2);
             tpConsultar.Name = "tpConsultar";
             tpConsultar.SelectedIndex = 0;
-            tpConsultar.Size = new Size(687, 324);
+            tpConsultar.Size = new Size(322, 324);
             tpConsultar.TabIndex = 12;
             // 
             // tpGrilla
@@ -339,7 +335,7 @@
             tpGrilla.Margin = new Padding(3, 2, 3, 2);
             tpGrilla.Name = "tpGrilla";
             tpGrilla.Padding = new Padding(3, 2, 3, 2);
-            tpGrilla.Size = new Size(679, 296);
+            tpGrilla.Size = new Size(314, 296);
             tpGrilla.TabIndex = 2;
             tpGrilla.Text = "Grilla";
             tpGrilla.UseVisualStyleBackColor = true;
@@ -394,7 +390,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(702, 351);
+            ClientSize = new Size(355, 351);
             Controls.Add(tpConsultar);
             Name = "frmRegistro";
             Text = "Venta De Respuestos";
@@ -416,7 +412,6 @@
         private Label lblNumeroDelRespuesto;
         private Label lblDescripcion;
         private Label lblPrecioDelRespuesto;
-        private Label lblPrecio;
         private ComboBox cmbMarca;
         private ComboBox cmbOrigen;
         private TextBox txtDescripcion;
@@ -439,5 +434,6 @@
         private DataGridViewTextBoxColumn colDescripciones;
         private DataGridViewTextBoxColumn colPrecios;
         private TabPage tpGrilla;
+        private TextBox txtPrecio;
     }
 }
