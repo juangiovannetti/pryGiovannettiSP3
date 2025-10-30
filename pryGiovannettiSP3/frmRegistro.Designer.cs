@@ -30,6 +30,7 @@
         {
             TabPage tpDatos;
             TabPage Consultas;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistro));
             txtPrecio = new TextBox();
             lblMacaDeRespuesto = new Label();
             btnIngresar = new Button();
@@ -401,8 +402,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(406, 468);
             Controls.Add(tpConsultar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmRegistro";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Venta De Respuestos";
             Load += frmRegistro_Load;
             tpDatos.ResumeLayout(false);
